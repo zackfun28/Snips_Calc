@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3.7
 # -*- coding: utf-8 -*-
 
 import ConfigParser """ import pour créer des "fichiers" pour contenir les entrées """
