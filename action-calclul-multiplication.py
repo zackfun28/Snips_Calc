@@ -1,16 +1,16 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-import ConfigParser
-from hermes_python.hermes import Hermes
-from hermes_python.ontology import *
+import ConfigParser """ import pour créer des "fichiers" pour contenir les entrées """
+from hermes_python.hermes import Hermes """ connexion mqtt (spécifique a snips) """ 
+from hermes_python.ontology import * """ import pour les intent""" 
 import io
 import math
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
 
-class SnipsConfigParser(ConfigParser.SafeConfigParser):
+class SnipsConfigParser(ConfigParser.SafeConfigParser): 
     def to_dict(self):
         return {section : {option_name : option for option_name, option in self.items(section)} for section in self.sections()}
 
@@ -42,7 +42,7 @@ def action_wrapper(hermes, intentMessage, conf):
     second = int(intentMessage.slots.secondTerm.first().value)
     calc = first * second
     if str(calc)[-2:] == ".0":
-        calc = int(calc)
+        calc = int(calc) """ arrondir le résultat """
     result_sentence = "Le résultat de la multiplication de  {} fois {} égale {} .".format(first, second, calc)
 
     current_session_id = intentMessage.session_id
